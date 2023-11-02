@@ -1,0 +1,10 @@
+
+    <h1>Détails </h1>
+    <p><strong>Titre:</strong> {{ book.title }}</p>
+    <p><strong>Auteur:</strong> {{ book.author }}</p>
+    <p><strong>Catégorie:</strong> {{ book.category }}</p>
+    <p><strong>Date de publication:</strong> {{ book.publicationDate ? book.publicationDate|date('Y-m-d') : 'Non définie' }}</p>
+    
+   
+    <a href="{{ path('listpub') }}" class="btn btn-primary">Retour</a>
+

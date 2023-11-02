@@ -1,0 +1,47 @@
+{% block body %}
+<div style="text-align:center">
+    <h1>Book list</h1>
+       <form action="{{ path('search') }}" method="SET">
+    <input type="text" name="id" placeholder="Recherche par id">
+    <button type="submit">search</button>
+    </form>
+       <table  class="center"  border="5" style="margin-left:auto;margin-right:auto">
+       
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Catégorie</th>
+                    <th>Date de publication</th>
+                    <th>Publié</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.category }}</td>
+                        <td>{{ book.publicationDate ? book.publicationDate|date('Y-m-d') : 'Non définie' }}</td>
+                        <td>{{ book.published ? 'Oui' : 'Non' }}</td>
+                        <td><button><a href="{{ path('update', {'id': book.id}) }}" class="btn btn-primary">edit</a></button>
+                        <button><a href="{{ path('remove', {'id': book.id}) }}" class="btn btn-primary">delete</a></button>
+                        <button><a href="{{ path('show', {'id': book.id}) }}" class="btn btn-primary">show</a></button></td>
+                        
+                        
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+          {% if books is not empty %}
+        <p>Nombre de livres publiés : {{ books|length }}</p>
+        <p>Nombre de livres non publiés : {{ books|filter(b => not b.published)|length }}</p>
+    {% else %}
+        <p>No Books found</p>
+    {% endif %}
+    <button><a href="{{ path('remove0') }}" class="btn btn-primary">delete0</a></button>
+    <button><a href="{{ path('add') }}" class="btn btn-primary">Create New</a></button>
+{% endblock %}
+

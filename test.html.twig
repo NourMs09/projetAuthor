@@ -1,0 +1,45 @@
+{% block body %}
+<div style="text-align:center">
+    <h1>List Authors</h1>
+    <form method="get" action="{{ path('searchauthors') }}">
+        <div class="form-group">
+            <label for="min_books">Nombre min de livres :</label>
+            <input type="number" name="min_books" id="min_books">
+        
+            <label for="max_books">Nombre max de livres :</label>
+            <input type="number" name="max_books" id="max_books">
+        <button type="submit" class="btn btn-primary">search</button>
+        </div>
+    <table  class="center"  border="5" style="margin-left:auto;margin-right:auto">
+        <thead>
+            <tr>
+                <th style="border: 2px solid #000;">UserName</th>
+                <th style="border: 2px solid #000;">email</th>
+                 <th style="border: 2px solid #000;">Number of Books</th>
+                <th style="border: 2px solid #000;">Action</th>
+                
+            </tr>
+          
+        </thead>
+        <tbody>
+            {% for t in response %}
+            <tr>
+                
+                <td style="border: 2px solid #000;">{{ t.username }}</td>
+                <td style="border: 2px solid #000;">{{ t.email }}</td>  
+                <td style="border: 2px solid #000;">{{ t.nbbooks }}</td>  
+                  <td><button><a href="{{ path('removef', {'id': t.id}) }}" class="btn btn-primary">remove</a></button>
+
+                  <button><a href="{{ path('update', {'id': t.id}) }}" class="btn btn-primary">update</a></button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+          
+        
+    </table>
+     <button><a href="{{ path('addf') }}" class="btn btn-primary">Add</a></button>
+     <button><a href="{{ path('delete0') }}" class="btn btn-primary">delete0</a></button>
+   
+   
+    
+{% endblock %}

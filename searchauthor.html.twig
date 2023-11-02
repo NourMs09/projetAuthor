@@ -1,0 +1,7 @@
+ {% if authors is empty %}
+            <li>Aucun auteur trouvé pour les critères de recherche.</li>
+        {% else %}
+            {% for author in authors %}
+                <li>{{ author.username }} - {{ author.nbbooks }} livres</li>
+            {% endfor %}
+        {% endif %}

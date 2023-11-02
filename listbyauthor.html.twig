@@ -1,0 +1,25 @@
+{% block body %}
+<div style="text-align:center">
+    <h1>Liste des livres triée par auteur</h1>
+   <table  class="center"  border="5" style="margin-left:auto;margin-right:auto">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Catégorie</th>
+                 <th>Date de publication</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author.username }}</td>
+                    <td>{{ book.category }}</td>
+                    <td>{{ book.publicationDate ? book.publicationDate|date('Y-m-d') : 'Non définie' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+{% endblock %}

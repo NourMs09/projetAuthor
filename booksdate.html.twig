@@ -1,0 +1,6 @@
+ <h1>Liste des livres publiés entre deux dates</h1>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} - {{ book.publicationDate|date('Y-m-d') }}</li>
+        {% endfor %}
+    </ul>

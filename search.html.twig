@@ -1,0 +1,10 @@
+{% block body %}
+    {% if book is defined and book is not null %}
+        <p>Id : {{ book.id}}</p>
+        <p>Author : {{ book.author}}</p>
+        <p>Titre : {{ book.title }}</p>
+        <p>Catégorie : {{ book.category }}</p>
+    {% else %}
+        <p>Aucun livre trouvé avec l'id spécifié.</p>
+    {% endif %}
+{% endblock %}
